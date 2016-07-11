@@ -1,0 +1,7 @@
+%h1 Sign in
+.row
+  .col-xs-6.col-md-offset-3
+    = simple_form_for :session, url: sessions_path, method: :post do |f|
+      = f.input :email
+      = f.input :password
+      = f.button :submit, class: "btn"

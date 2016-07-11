@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :users do
+    resource :profile, only: :show
+  end
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/sign_in',  to: 'sessions#new',         via: 'get'
+  match '/sign_out', to: 'sessions#destroy',     via: 'delete'
+  # resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

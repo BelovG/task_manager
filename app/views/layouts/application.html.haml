@@ -1,0 +1,67 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title TaskManager
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = render "layouts/navigation"
+
+
+    .container{style: "margin-top: 60px;"}
+      - flash.each do |name, msg|
+        = content_tag :div, msg, class: "alert alert-danger"
+      = yield
+
+
+      / Title
+      -#.row
+        .col-lg-12
+          %h3 Latest Features
+      / /.row
+      / Page Features
+      -#.row.text-center
+        .col-md-3.col-sm-6.hero-feature
+          .thumbnail
+            %img{:alt => "", :src => "http://placehold.it/800x500"}/
+            .caption
+              %h3 Feature Label
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              %p
+                %a.btn.btn-primary{:href => "#"} Buy Now!
+                %a.btn.btn-default{:href => "#"} More Info
+        .col-md-3.col-sm-6.hero-feature
+          .thumbnail
+            %img{:alt => "", :src => "http://placehold.it/800x500"}/
+            .caption
+              %h3 Feature Label
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              %p
+                %a.btn.btn-primary{:href => "#"} Buy Now!
+                %a.btn.btn-default{:href => "#"} More Info
+        .col-md-3.col-sm-6.hero-feature
+          .thumbnail
+            %img{:alt => "", :src => "http://placehold.it/800x500"}/
+            .caption
+              %h3 Feature Label
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              %p
+                %a.btn.btn-primary{:href => "#"} Buy Now!
+                %a.btn.btn-default{:href => "#"} More Info
+        .col-md-3.col-sm-6.hero-feature
+          .thumbnail
+            %img{:alt => "", :src => "http://placehold.it/800x500"}/
+            .caption
+              %h3 Feature Label
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              %p
+                %a.btn.btn-primary{:href => "#"} Buy Now!
+                %a.btn.btn-default{:href => "#"} More Info
+      / /.row
+      %hr/
+      / Footer
+      %footer
+        -#.row
+          .col-lg-12
+            %p TaskManager

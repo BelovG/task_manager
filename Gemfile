@@ -45,9 +45,10 @@ group :development do
 end
 
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'haml-rails'
 gem 'simple_form'
+gem 'bcrypt'
 
 group :development do
   gem 'better_errors'
@@ -86,5 +87,6 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'simplecov', :require => false
 end
 
