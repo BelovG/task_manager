@@ -1,40 +1,32 @@
 .row
   .col-lg-12
-    %h3 Latest Features
-.row.text-center
-  .col-md-3.col-sm-6.hero-feature
-    .thumbnail
-      %img{:alt => "", :src => "http://placehold.it/800x500"}/
-      .caption
-        %h3 Feature Label
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        %p
-          %a.btn.btn-primary{:href => "#"} Buy Now!
-          %a.btn.btn-default{:href => "#"} More Info
-  .col-md-3.col-sm-6.hero-feature
-    .thumbnail
-      %img{:alt => "", :src => "http://placehold.it/800x500"}/
-      .caption
-        %h3 Feature Label
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        %p
-          %a.btn.btn-primary{:href => "#"} Buy Now!
-          %a.btn.btn-default{:href => "#"} More Info
-  .col-md-3.col-sm-6.hero-feature
-    .thumbnail
-      %img{:alt => "", :src => "http://placehold.it/800x500"}/
-      .caption
-        %h3 Feature Label
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        %p
-          %a.btn.btn-primary{:href => "#"} Buy Now!
-          %a.btn.btn-default{:href => "#"} More Info
-  .col-md-3.col-sm-6.hero-feature
-    .thumbnail
-      %img{:alt => "", :src => "http://placehold.it/800x500"}/
-      .caption
-        %h3 Feature Label
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        %p
-          %a.btn.btn-primary{:href => "#"} Buy Now!
-          %a.btn.btn-default{:href => "#"} More Info
+    %h3 Tasks
+.row
+  %table.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th #
+        %th created_at
+        %th name
+        %th user
+    %tbody
+      - @tasks.each do |task|
+        %tr
+          %td
+            = task.id
+          %td
+            = task.created_at
+          %td
+            = task.name
+          %td
+            = task.user.present? ? task.user.email : "Не назначена"
+    -#.col-md-3.col-sm-6.hero-feature
+      .thumbnail
+        .caption
+          %h3
+            = task.name
+          %p
+            = task.description
+          %p
+            %a.btn.btn-primary{:href => "#"} Buy Now!
+            %a.btn.btn-default{:href => "#"} More Info

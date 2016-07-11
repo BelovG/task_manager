@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :admin]
 
+  has_many :tasks, dependent: :destroy
+
   def self.new_remember_token
     SecureRandom.urlsafe_base64
   end
