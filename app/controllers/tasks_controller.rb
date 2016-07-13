@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:show, :edit, :update, :destroy, :download_file]
+  respond_to :html, :json
+  before_action :find_task, only: [:show, :edit, :update, :destroy, :download_file, :change_state]
 
   def index
     @tasks = Task.all
@@ -26,10 +27,14 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params)
-      redirect_to task_path(@task)
-    else
-      render 'edit'
+    respond_to do |format|
+      if @task.update(task_params)
+        format.html { redirect_to task_path(@task) }
+        format.json { render json: {status: '200'}}
+      else
+        format.html { render 'edit' }
+        format.json { render json: {errors: @task.errors, status: '500'} }
+      end
     end
   end
 
@@ -48,7 +53,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :description, :user_id, :file)
+    params.require(:task).permit(:name, :description, :user_id, :state, :file)
   end
 
   def find_task

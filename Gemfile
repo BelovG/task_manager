@@ -50,6 +50,7 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'bcrypt'
 gem 'carrierwave'
+gem 'responders', '~> 2.0'
 
 group :development do
   gem 'better_errors'

@@ -27,22 +27,14 @@
               %td= task.description
             %tr
               %th Статус
-              -#%td= task.state
               %td
                 .btn-group{"data-toggle" => "buttons"}
                   - ['New', 'Started', 'Finished'].each_with_index do |state, index|
-                    %label.btn.btn-primary.btn-xs{class: task.state == state ? 'active' : ''}
+                    %label.btn.btn-primary.btn-xs.state-js{ class: task.state == state ? 'active' : '',
+                                                            :'data-task-id' => task.id,
+                                                            :'data-task-state' => state}
                       %input{name: "options", type: "radio", id: "option#{index+1}"}
                       = state
-                  -#%label.btn.btn-primary.btn-xs
-                    %input#option1{:name => "options", :type => "radio"}/
-                    New
-                  -#%label.btn.btn-primary.btn-xs
-                    %input#option2{:name => "options", :type => "radio"}/
-                    Started
-                  -#%label.btn.btn-primary.btn-xs
-                    %input#option3{:name => "options", :type => "radio"}/
-                    Finished
             %tr
               %th Создана
               %td= task.created_at
