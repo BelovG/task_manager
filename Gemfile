@@ -49,6 +49,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'bcrypt'
+gem 'carrierwave'
 
 group :development do
   gem 'better_errors'

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'tasks#index'
-  resources :tasks
+  resources :tasks do
+    member do
+      post :download_file
+    end
+  end
 
   resources :users do
     resource :profile, only: :show

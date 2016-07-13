@@ -131,4 +131,31 @@ RSpec.describe TasksController, type: :controller do
       expect(Task.count).to eq(0)
     end
   end
+
+  describe "download_file action" do
+    context "task found" do
+      before do
+        @task = create(:task)
+        @task_with_file = create(:task_with_file)
+      end
+
+      it "renders 404 page if an file is not found" do
+        post :download_file, {id: @task.id}
+        expect(response.status).to eq(404)
+      end
+
+      it "download if an file is found" do
+        post :download_file, id: @task_with_file.id
+        res = "attachment; filename=\"#{@task_with_file.file.get_filename}\""
+        expect(response.header['Content-Disposition']).to eq(res)
+      end
+    end
+
+    context "task is not found" do
+      it "renders 404 page if an task is not found" do
+        post :download_file, id: "0"
+        expect(response.status).to eq(404)
+      end
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:show, :edit, :update, :destroy]
+  before_action :find_task, only: [:show, :edit, :update, :destroy, :download_file]
 
   def index
     @tasks = Task.all
@@ -38,9 +38,17 @@ class TasksController < ApplicationController
     redirect_to user_profile_path(current_user)
   end
 
+  def download_file
+    if @task.file.present?
+      send_file(@task.file.path, :disposition => 'attachment', :url_based_filename => false)
+    else
+      render text: "Страница не найдена", status: 404
+    end
+  end
+
   private
   def task_params
-    params.require(:task).permit(:name, :description, :user_id)
+    params.require(:task).permit(:name, :description, :user_id, :file)
   end
 
   def find_task

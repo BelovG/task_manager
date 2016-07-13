@@ -25,3 +25,11 @@
             %tr
               %th Назначена
               %td= show_owner(@task)
+          - if @task.file.present?
+            %tr
+              %th Файл
+              %td
+                - if @task.file.image?
+                  = image_tag @task.file_url, class: "image"
+                - else
+                  = link_to @task.file.get_filename, download_file_task_path(@task), method: :post
