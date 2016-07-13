@@ -1,3 +1,16 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.panel-body {
+  table {
+    margin-bottom: 0px;
+    tbody {
+      tr {
+        th {
+          width: 200px;
+        }
+      }
+    }
+  }
+}

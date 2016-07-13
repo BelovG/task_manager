@@ -1,0 +1,27 @@
+%h1 Задача №#{@task.id}
+.row
+  .panel.panel-default
+    .panel-heading
+      %b= @task.name
+    .panel-body
+      %table.table.table-striped.table-hover.table-condensed
+        %tbody
+          %tr
+            %th ID
+            %td= @task.id
+          %tr
+            %th Название
+            %td= @task.name
+          %tr
+            %th Описание
+            %td= @task.description
+          %tr
+            %th Статус
+            %td= @task.state
+          %tr
+            %th Создана
+            %td= @task.created_at
+          - if admin?
+            %tr
+              %th Назначена
+              %td= show_owner(@task)

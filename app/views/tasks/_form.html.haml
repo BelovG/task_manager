@@ -1,0 +1,10 @@
+.row
+  .col-xs-6.col-md-offset-3
+    = simple_form_for task, html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f|
+      = f.input :name
+      = f.input :description
+      - if admin?
+        = f.input :user_id, :collection => User.all, :label_method => :email, :value_method => :id, :include_blank => false
+      - else
+        = f.input :user_id, :as => :hidden, input_html: { value: current_user.id }
+      = f.button :submit, class: "btn pull-right"

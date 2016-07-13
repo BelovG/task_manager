@@ -1,14 +1,14 @@
 .row
   .col-lg-12
-    %h3 Tasks
+    %h1 Все задачи
 .row
   %table.table.table-striped.table-hover.table-condensed
     %thead
       %tr
-        %th #
-        %th created_at
-        %th name
-        %th user
+        %th ID
+        %th Создана
+        %th Название
+        %th Назначена
     %tbody
       - @tasks.each do |task|
         %tr
@@ -19,14 +19,4 @@
           %td
             = task.name
           %td
-            = task.user.present? ? task.user.email : "Не назначена"
-    -#.col-md-3.col-sm-6.hero-feature
-      .thumbnail
-        .caption
-          %h3
-            = task.name
-          %p
-            = task.description
-          %p
-            %a.btn.btn-primary{:href => "#"} Buy Now!
-            %a.btn.btn-default{:href => "#"} More Info
+            = show_owner(task)

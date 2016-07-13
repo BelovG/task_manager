@@ -1,4 +1,8 @@
 ru:
+  helpers:
+    submit:
+      create: 'Создать'
+      update: 'Сохранить'
   activerecord:
     errors:
       models:
@@ -9,3 +13,18 @@ ru:
               blank: "email не может быть пустым"
             password:
               blank: "password не может быть пустым"
+        task:
+          attributes:
+            name:
+              blank: "Задача не может существовать без имени"
+  simple_form:
+    labels:
+      task:
+        new:
+          name: "Название"
+          description: "Описание"
+          user_id: "Назначена"
+        edit:
+          name: "Название"
+          description: "Описание"
+          user_id: "Назначена"

@@ -7,19 +7,7 @@
     = csrf_meta_tags
   %body
     = render "layouts/navigation"
-
-
-    .container{style: "margin-top: 60px;"}
+    .container.content
       - flash.each do |name, msg|
         = content_tag :div, msg, class: "alert alert-danger"
       = yield
-
-
-
-      / /.row
-      %hr/
-      / Footer
-      %footer
-        -#.row
-          .col-lg-12
-            %p TaskManager
