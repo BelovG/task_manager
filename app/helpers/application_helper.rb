@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def show_owner(task)
-    task.user.present? ? task.user.email : "Не назначена"
+    task.user.present? ? task.user.email : 'Не назначена'
   end
 end

@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   before_save { email.downcase! }
   before_create :create_remember_token
 
-  validates_presence_of :email, :password_digest, :role
+  validates :email, presence: value
+  validates :password_digest, presence: value
+  validates :role, presence: value
   validates :email, uniqueness: { case_sensitive: false }
 
   enum role: [:user, :admin]
@@ -20,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    role == "admin"
+    role == 'admin'
   end
 
   private
