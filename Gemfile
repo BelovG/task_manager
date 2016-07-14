@@ -51,6 +51,7 @@ gem 'simple_form'
 gem 'bcrypt'
 gem 'carrierwave'
 gem 'responders', '~> 2.0'
+gem 'aasm'
 
 group :development do
   gem 'better_errors'

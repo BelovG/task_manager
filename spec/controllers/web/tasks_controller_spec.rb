@@ -28,6 +28,8 @@ RSpec.describe Web::TasksController, type: :controller do
   end
 
   describe 'create action' do
+    before { create(:user) }
+
     context 'with valid attributes' do
       it 'creates a new task' do
         expect { post :create, task: attributes_for(:task) }.to change(Task, :count).by(1)

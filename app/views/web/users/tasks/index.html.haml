@@ -28,14 +28,10 @@
             %tr
               %th Статус
               %td
-                .btn-group{"data-toggle" => "buttons"}
-                  - ['New', 'Started', 'Finished'].each_with_index do |state, index|
-                    %label.btn.btn-primary.btn-xs.state-js{ class: task.state == state ? 'active' : '',
-                                                            :'data-task-id' => task.id,
-                                                            :'data-task-state' => state,
-                                                            :'data-user-id' => task.user.id}
-                      %input{name: "options", type: "radio", id: "option#{index+1}"}
-                      = state
+                %span#state
+                  = task.state
+                - unless task.Finished?
+                  = link_to "Next ->", next_state_api_user_task_path(task.user, task), method: :put, remote: true, class: "btn btn-primary btn-xs pull-right next-state-js"
             %tr
               %th Создана
               %td= task.created_at

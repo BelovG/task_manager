@@ -1,1 +1,3 @@
-class Web::ApplicationController < ApplicationController; end
+class Web::ApplicationController < ApplicationController
+  include SessionsHelper
+end

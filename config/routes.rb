@@ -18,4 +18,14 @@ Rails.application.routes.draw do
     match '/sign_in',  to: 'sessions#new',         via: 'get'
     match '/sign_out', to: 'sessions#destroy',     via: 'delete'
   end
+
+  namespace :api, defaults: { format: :json } do
+    resources :users, only: [] do
+      resources :tasks, only: [] do
+        member do
+          put :next_state
+        end
+      end
+    end
+  end
 end

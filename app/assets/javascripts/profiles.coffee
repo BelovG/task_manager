@@ -5,15 +5,11 @@
 #$("input[id^='state-option']").click ->
 #  console.log 1
 $(document).ready ->
-  $(".state-js").click ->
-    data = this.dataset
-    $.ajax
-      url: "/users/#{data.userId}/tasks/#{data.taskId}"
-      type: "PUT"
-      data: task: {state: data.taskState}
-      dataType: 'json'
-      success: (res) ->
-        console.log res
-      error: (res) ->
-        console.log res
 
+  $(".next-state-js").on 'ajax:success', (e, data, status, xhr) ->
+    $("#state").html(data['state'])
+    if data['state'] == "Finished"
+      $(this).hide()
+
+  $(".next-state-js").on 'ajax:error', (e, xhr, status, error) ->
+    alert error

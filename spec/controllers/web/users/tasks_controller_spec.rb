@@ -65,17 +65,31 @@ RSpec.describe Web::Users::TasksController, type: :controller do
 
   describe 'update action' do
     before { @task = create(:task) }
+    let(:valid_params) do
+      {
+        task: { name: 'test', user_id: @user.id },
+        id: @task.id,
+        user_id: @user.id
+      }
+    end
+    let(:invalid_params) do
+      {
+        task: { name: '', user_id: @user.id },
+        id: @task.id,
+        user_id: @user.id
+      }
+    end
 
     context 'with valid attributes' do
       it 'update task' do
-        put :update, task: { name: 'test' }, id: @task.id, user_id: @user.id
+        put :update, valid_params
         expect(@task.reload.name).to eq('test')
       end
     end
 
     context 'with invalid attributes' do
       it 'renders edit page' do
-        put :update, task: { name: '' }, id: @task.id, user_id: @user.id
+        put :update, invalid_params
         expect(response).to render_template('edit')
       end
     end
