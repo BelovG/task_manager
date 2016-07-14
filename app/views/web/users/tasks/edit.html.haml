@@ -1,0 +1,7 @@
+%h1.text-center Редактировать задачу
+
+
+.row
+  .col-xs-6.col-md-offset-3
+    = simple_form_for @task, url: user_task_path(@task.user, @task), html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f|
+      = render "shared/task_form", f: f, task: @task

@@ -8,7 +8,7 @@ $(document).ready ->
   $(".state-js").click ->
     data = this.dataset
     $.ajax
-      url: "/tasks/#{data.taskId}"
+      url: "/users/#{data.userId}/tasks/#{data.taskId}"
       type: "PUT"
       data: task: {state: data.taskState}
       dataType: 'json'

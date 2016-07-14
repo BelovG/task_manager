@@ -6,6 +6,7 @@ namespace :faker do
       Task.create do |t|
         t.name = Faker::StarWars.character
         t.description = Faker::Hipster.sentence
+        t.user_id = 1
       end
       p task.id
     end

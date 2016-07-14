@@ -32,4 +32,4 @@
                 - if @task.file.image?
                   = image_tag @task.file_url, class: "image"
                 - else
-                  = link_to @task.file.get_filename, download_file_task_path(@task), method: :post
+                  = link_to @task.file.get_filename, download_file_user_task_path(@task.user, @task), method: :post

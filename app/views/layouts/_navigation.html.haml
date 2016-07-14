@@ -11,7 +11,7 @@
       %ul.nav.navbar-nav
         - if signed_in?
           %li
-            = link_to "Личный кабинет", user_profile_path(current_user)
+            = link_to "Личный кабинет", user_tasks_path(current_user)
           %li
             = link_to "Выйти", sign_out_path, method: :delete
         - else
