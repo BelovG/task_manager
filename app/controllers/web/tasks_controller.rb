@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class Web::TasksController < Web::ApplicationController
   respond_to :html, :json
   before_action :find_task, only: [:show, :edit, :update, :destroy, :download_file, :change_state]
 

@@ -28,3 +28,6 @@ ru:
           name: "Название"
           description: "Описание"
           user_id: "Назначена"
+      session:
+        email: "Email"
+        password: "Пароль"

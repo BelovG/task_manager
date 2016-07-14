@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TasksController, type: :controller do
+RSpec.describe Web::TasksController, type: :controller do
   describe "index action" do
     it "renders index templat" do
       get :index
