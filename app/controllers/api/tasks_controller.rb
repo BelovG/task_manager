@@ -3,17 +3,17 @@ class Api::TasksController < Api::ApplicationController
 
   def next_state
     if @task.next_state!
-      render json: { state: @task.state, status: 200 }
+      render json: @task.as_json
     else
-      render json: { state: @task.state, status: 500 }
+      render json: @task.as_json
     end
   end
 
   private
 
   def find_task
-    @task = Task.find_by_id(params[:id])
+    @task = Task.find_by(id: params[:id])
     return if @task
-    render text: 'Задача не найдена', status: 404
+    render text: t('controllers.api.tasks.fail'), status: 404
   end
 end

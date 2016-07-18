@@ -7,7 +7,7 @@
 $(document).ready ->
 
   $(".next-state-js").on 'ajax:success', (e, data, status, xhr) ->
-    $("#state").html(data['state'])
+    $("#state-" + data['id']).html(data['state'])
     if data['state'] == "Finished"
       $(this).hide()
 

@@ -8,7 +8,7 @@ require 'rspec/rails'
 require 'database_cleaner'
 require 'simplecov'
 SimpleCov.start
-include SessionsHelper
+include Web::Sessions
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       scope :module => 'users' do
         resources :tasks, except: [:new, :create] do
           member do
-            post :download_file
+            get :download_file
           end
         end
       end

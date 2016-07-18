@@ -31,3 +31,19 @@ ru:
       session:
         email: "Email"
         password: "Пароль"
+  controllers:
+    api:
+      tasks:
+        fail: "Задача не найдена"
+    web:
+      users:
+        tasks:
+          find_task:
+            fail: "Задача не найдена"
+          download_file:
+            fail: "Файл не найден"
+
+      sessions:
+        create:
+          flash:
+            error: "Invalid email/password combination."

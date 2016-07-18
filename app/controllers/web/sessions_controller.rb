@@ -8,7 +8,7 @@ class Web::SessionsController < Web::ApplicationController
       sign_in user
       redirect_to user_tasks_path(user)
     else
-      flash[:error] = 'Invalid email/password combination'
+      flash[:error] = t('controllers.web.sessions.create.flash.error')
       render 'new'
     end
   end

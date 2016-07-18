@@ -28,7 +28,7 @@ class Web::Users::TasksController < Web::Users::ApplicationController
     if @task.file.present?
       send_file(@task.file.path, disposition: 'attachment', url_based_filename: false)
     else
-      render text: 'Файл не найден', status: 404
+      render text: t('controllers.web.users.tasks.download_file.fail'), status: 404
     end
   end
 
@@ -39,9 +39,9 @@ class Web::Users::TasksController < Web::Users::ApplicationController
   end
 
   def find_task
-    @task = Task.find_by_id(params[:id])
+    @task = Task.find_by(id: params[:id])
     return if @task
-    render text: 'Задача не найдена', status: 404
+    render text: t('controllers.web.users.tasks.find_task.fail'), status: 404
   end
 
   def user_exist?
